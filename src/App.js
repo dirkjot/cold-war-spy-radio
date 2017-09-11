@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+  radioChanged = event => {
+    console.log(event.target.value)
+  }
+
   render() {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+
+          <h2>The Cold War Radio</h2>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        // this is NOT how you should do radios in react, it seems to work but
+        // will fail when you click button 1, 2, then 1 again.
+        <div  onChange={event => this.radioChanged(event)}>
+          <input type="radio" value="send-instructions" name="message"/> Send Instructions
+          <input type="radio" value="document-dropped" name="message"/> Document dropped
+          <input type="radio" value="more-money" name="message"/> Send more money
+        </div>
       </div>
     );
   }
