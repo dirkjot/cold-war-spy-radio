@@ -9,7 +9,7 @@ The idea is based on Bridge of Spies and all the Cold War books I read as a chil
 ### Phase 1
 The app will consist of three radio buttons with the labels above.  There is an `Encrypt` button which will copy the message selected by the radio into the `message out` area, but after encrypting it.  Encryption is done by replacing all letters `e` with `3`. 
 
-At this point, my app is functional:  I can copy the encrypted text onto a piece of paper and attach it to my homing pigeon. 
+At this point, my app is functional:  I can copy the encrypted text onto a piece of paper and send it in morse code on the agreed upon frequency with my secret spy radio. 
 
 ### Phase 2
 Pressing the 'encrypt' button multiple times on the same message makes for stronger encryption.  There are three incremental levels: `e -> 3`, then `i -> 1`, finally `o -> x`.
