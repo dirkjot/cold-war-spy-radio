@@ -2,18 +2,38 @@ import React, { Component } from 'react';
 import './Radio.css'
 export class Radio extends Component {
 
+  constructor (props) {
+    super(props)
+    this.state = { activeRadio: undefined }
+  }
+
   radioChanged = event => {
-    console.log(event.target.value)
+    if (event.target.value !== this.state.activeRadio) {
+      console.log(event.target.value)
+      this.setState({activeRadio: event.target.value}) }
   }
 
   render = () => {
     return (
-      <div  onChange={event => this.radioChanged(event)}>
-        // this is NOT how you should do radios in react, it seems to work but
-        // will fail when you click button 1, 2, then 1 again.
-        <p><input type="radio" value="send-instructions" name="message"/> Send Instructions</p>
-        <p><input type="radio" value="document-dropped" name="message"/> Document dropped</p>
-        <p><input type="radio" value="more-money" name="message"/> Send more money</p>
-      </div>)
+      <form>
+        <label>
+          <input type="radio"
+            value="send-instructions"
+            onClick={event => this.radioChanged(event)}
+            checked={this.state.activeRadio === "send-instructions"}/>
+          Send Instructions</label>
+        <label>
+          <input type="radio"
+            value="document-dropped"
+              onClick={event => this.radioChanged(event)}
+            checked={this.state.activeRadio === "document-dropped"}/>
+          Document dropped</label>
+        <label>
+          <input type="radio"
+            value="more-money"
+              onClick={event => this.radioChanged(event)}
+            checked={this.state.activeRadio === "more-money"}/>
+          Send more money</label>
+      </form>)
   }
 }

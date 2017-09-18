@@ -1,7 +1,0 @@
-input :before {
-  content: "<li>";
-}
-
-input :after {
-  content: "</li>";
-}
