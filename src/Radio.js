@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import {RadioButton} from './RadioButton.js'
 import './Radio.css'
+
 export class Radio extends Component {
 
   constructor (props) {
@@ -16,24 +18,12 @@ export class Radio extends Component {
   render = () => {
     return (
       <form>
-        <label>
-          <input type="radio"
-            value="send-instructions"
-            onClick={event => this.radioChanged(event)}
-            checked={this.state.activeRadio === "send-instructions"}/>
-          Send Instructions</label>
-        <label>
-          <input type="radio"
-            value="document-dropped"
-              onClick={event => this.radioChanged(event)}
-            checked={this.state.activeRadio === "document-dropped"}/>
-          Document dropped</label>
-        <label>
-          <input type="radio"
-            value="more-money"
-              onClick={event => this.radioChanged(event)}
-            checked={this.state.activeRadio === "more-money"}/>
-          Send more money</label>
+        <RadioButton value="send-instructions" text="Send Instructions"
+          active={this.state.activeRadio} onChange={this.radioChanged} />
+        <RadioButton value="document-dropped" text="Document dropped"
+          active={this.state.activeRadio} onChange={this.radioChanged}/>
+        <RadioButton value="more-money" text="Send more money"
+          active={this.state.activeRadio} onChange={this.radioChanged}/>
       </form>)
   }
 }
