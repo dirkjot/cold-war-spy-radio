@@ -1,11 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './EncryptedText.css'
 
 export function EncryptedText (props) {
   return (
-   <table>
-     <thead><td>Encrypted Text</td></thead>
-   <td>{props.text}</td>
-  </table>)
+    <div className="flexContainer">
+      <table className="flexunit">
+        <thead>
+          <tr><td>Encrypted Text</td></tr></thead>
+        <tbody>
+          <tr><td>{props.text}</td></tr></tbody>
+      </table>
+    </div>)
 
 }

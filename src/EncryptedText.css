@@ -1,5 +1,17 @@
 
-td {
+div.flexContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+
+table.flexUnit {
+  flex: 0 1 auto;
+}
+
+tbody td {
   border: 1px black;
   background-color: lightgrey;
 }
