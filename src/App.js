@@ -10,15 +10,19 @@ class App extends Component {
     this.state = {message: "(A message in a bottle)"}
   }
 
-  setMessage = (message) => {
-    // do not use this.message, or this.state.message=message, as UI
-    // will not update
-    this.setState({message})
-    // key without a value, shorthand for {message: message}
-  }
 
-  radioChanged = event => {
-    console.log(event.target.value)
+  encrypt = (message) => (
+    // parenthesis, shorthand for { return (...)}
+    message.replace(/e/gi, "3")
+    // replace takes regexp, with Global and case-Insensitive flags
+  )
+
+  setMessage = (message) => {
+    // do not use 'this.message', or 'this.state.message = message', as UI
+    // will not update
+
+    // key without a value, shorthand for {message: message}
+    this.setState({message: this.encrypt(message)})
   }
 
   render() {
