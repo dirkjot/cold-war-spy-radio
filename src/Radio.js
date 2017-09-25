@@ -12,7 +12,8 @@ export class Radio extends Component {
   radioChanged = event => {
     if (event.target.value !== this.state.activeRadio) {
       console.log(event.target.value)
-      this.setState({activeRadio: event.target.value}) }
+      this.setState({activeRadio: event.target.value})
+      this.props.setter(event.target.value)}
   }
 
   render = () => {
