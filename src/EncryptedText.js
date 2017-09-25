@@ -8,7 +8,7 @@ export function EncryptedText (props) {
         <thead>
           <tr><td>Encrypted Text</td></tr></thead>
         <tbody>
-          <tr><td>{props.text}</td></tr></tbody>
+          <tr><td>{props.secretMessage}</td></tr></tbody>
       </table>
     </div>)
 
