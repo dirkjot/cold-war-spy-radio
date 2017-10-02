@@ -5,7 +5,7 @@ import App from './App';
 // redux:
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
-import { devToolsEnhancer } from 'redux-devtools-extension/logOnlyInProduction'
+import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction'
 // redux for this app:
 import { reducers } from './reducers'
 
@@ -14,7 +14,8 @@ import {AsyncMiddleware, LoggerMiddleware} from './actions'  // for demo
 
 let store = createStore(
   reducers,
-  applyMiddleware(LoggerMiddleware, AsyncMiddleware))
+  composeWithDevTools(
+    applyMiddleware(LoggerMiddleware, AsyncMiddleware)))
 
 // passing store to App for demo purposes only!!
 ReactDOM.render(
