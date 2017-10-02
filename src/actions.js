@@ -12,22 +12,24 @@ export const encrypt = (message) => (
 )
 
 
-const setMessage = (message) => ({
+export const setMessage = (message) => ({
   type: 'SET_MESSAGE',
   message: message
 })
 
-export const asyncEncrypt = (message) =>
-{
-  return function(dispatch)
-  {
-    message = message.replace("-", " ")
+
+export const AsyncMiddleware = store => dispatch => action => {
+  if (action.type === 'SET_MESSAGE') {
+    let message = action.message.replace("-", " ")
     console.log("GET for:" + message)
     request.get('http://localhost:3000/convert/' + message)
     .then(([body, response]) =>
-    {
-      console.log("GET returned: " + body)
-      dispatch(setMessage(body))
-    })
+      {
+        action.message = body
+        console.log("GET returned: " + body)
+        dispatch(action)
+      })
+  } else {
+    dispatch(action);
   }
 }

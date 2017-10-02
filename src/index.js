@@ -9,12 +9,12 @@ import { devToolsEnhancer } from 'redux-devtools-extension/logOnlyInProduction'
 // redux for this app:
 import { reducers } from './reducers'
 
-// redux-thunk
-import thunk from 'redux-thunk'
+// custom middleware (v1)
+import {AsyncMiddleware} from './actions'  // for demo
 
 let store = createStore(
   reducers,
-  applyMiddleware(thunk))
+  applyMiddleware(AsyncMiddleware))
 
 // passing store to App for demo purposes only!!
 ReactDOM.render(
