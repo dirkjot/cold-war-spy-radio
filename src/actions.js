@@ -1,4 +1,6 @@
 
+import request from 'es6-request'
+
 // action creator
 
 
@@ -9,7 +11,23 @@ export const encrypt = (message) => (
   // replace takes regexp, with Global and case-Insensitive flags
 )
 
-export const setMessage = (message) => ({
+
+const setMessage = (message) => ({
   type: 'SET_MESSAGE',
-  message: encrypt(message)
+  message: message
 })
+
+export const asyncEncrypt = (message) =>
+{
+  return function(dispatch)
+  {
+    message = message.replace("-", " ")
+    console.log("GET for:" + message)
+    request.get('http://localhost:3000/convert/' + message)
+    .then(([body, response]) =>
+    {
+      console.log("GET returned: " + body)
+      dispatch(setMessage(body))
+    })
+  }
+}
