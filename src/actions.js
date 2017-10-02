@@ -38,3 +38,8 @@ export const AsyncMiddleware = store => dispatch => action => {
     dispatch(action);
   }
 }
+
+export const LoggerMiddleware = store => dispatch => action => {
+  console.log("LOGMID: ", action)
+  dispatch(action)
+}
