@@ -8,7 +8,8 @@ No API calls. No mutations. Just a calculation.
 */
 
 const initialMessageState = {
-  message: "(a Msg in a Btl)"
+  message: "(a Msg in a Btl)",
+  activeRadio: undefined
 }
 
 const messageReducer = (state = initialMessageState, action) => {

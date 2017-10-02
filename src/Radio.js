@@ -6,7 +6,7 @@ export class Radio extends Component {
 
   constructor (props) {
     super(props)
-    this.state = { activeRadio: undefined }
+    this.state = { activeRadio: this.props.activeRadio }
   }
 
   radioChanged = event => {
@@ -19,11 +19,11 @@ export class Radio extends Component {
   render = () => {
     return (
       <form>
-        <RadioButton value="send-instructions" text="Send Instructions"
+        <RadioButton value="Send Instructions" text="Send Instructions"
           active={this.state.activeRadio} onChange={this.radioChanged} />
-        <RadioButton value="document-dropped" text="Document dropped"
+        <RadioButton value="Document dropped" text="Document dropped"
           active={this.state.activeRadio} onChange={this.radioChanged}/>
-        <RadioButton value="more-money" text="Send more money"
+        <RadioButton value="Send more money" text="Send more money"
           active={this.state.activeRadio} onChange={this.radioChanged}/>
       </form>)
   }

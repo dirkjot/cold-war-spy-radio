@@ -4,7 +4,7 @@ import {Radio} from './Radio'
 
 // the message part of the store's messageReducer will be past to the component
 const mapStateToProps = ({messageReducer}) => ({
-    message: messageReducer.message
+    activeRadio: messageReducer.activeRadio
 })
 
 // the component can call
