@@ -14,21 +14,26 @@ export const encrypt = (message) => (
 
 export const setMessage = (message) => ({
   type: 'SET_MESSAGE',
-  message: message
+  message: message,
+  async: AsyncEncrypt
 })
 
+const AsyncEncrypt = (action, dispatch) => {
+  let message = action.message.replace("-", " ")
+  console.log("GET for:" + message)
+  request.get('http://localhost:3000/convert/' + message)
+  .then(([body, response]) =>
+    {
+      action.message = body
+      console.log("GET returned: " + body)
+      dispatch(action)
+    })
+
+}
 
 export const AsyncMiddleware = store => dispatch => action => {
-  if (action.type === 'SET_MESSAGE') {
-    let message = action.message.replace("-", " ")
-    console.log("GET for:" + message)
-    request.get('http://localhost:3000/convert/' + message)
-    .then(([body, response]) =>
-      {
-        action.message = body
-        console.log("GET returned: " + body)
-        dispatch(action)
-      })
+  if ('async' in action) {
+    action.async(action, dispatch)
   } else {
     dispatch(action);
   }
